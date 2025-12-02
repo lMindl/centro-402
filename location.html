@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CFP 402 - Ubicación</title>
+<style>
+:root{ --bg:#c8fff1; --card:#fff; --text:#111; --muted:rgba(0,0,0,0.55); --header-bg:#1d9ca5; --circuit-color:rgba(255,255,255,1) }
+body.dark{ --bg:#0e1116; --text:#f0f0f0; --muted:rgba(255,255,255,0.6); --header-bg:#11575b; --circuit-color:rgba(0,0,0,1) }
+*{box-sizing:border-box} body{ margin:0; font-family:"Poppins",sans-serif; background:var(--bg); color:var(--text); padding:20px; display:flex; justify-content:center }
+.container{ width:100%; max-width:420px; background:var(--card); border-radius:18px; overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,0.12) }
+.header{ background:var(--header-bg); color:#fff; padding:20px; text-align:center }
+.header a{ position:absolute; left:14px; top:18px; color:#fff; text-decoration:none; font-weight:700 }
+.content{ padding:18px }
+.map{ width:100%; height:260px; background:#e9eef7; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#666 }
+.footer{ text-align:center; padding:12px; color:var(--muted) }
+.theme-btn{ position:fixed; right:18px; bottom:18px; width:66px; height:66px; border-radius:50%; background:var(--card); border:3px solid var(--circuit-color); box-shadow:0 12px 28px rgba(0,0,0,0.18); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:999 }
+.theme-btn img{ width:34px }
+</style>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <a href="index.html">← Inicio</a>
+      <h1>Ubicación exacta</h1>
+    </header>
+
+    <div class="content">
+      <p>Estamos en Florencio Varela — dirección: Calle Ficticia 123 (ejemplo). Consultanos para la dirección exacta.</p>
+      <div class="map">Mapa (pegá aquí tu iframe de Google Maps cuando lo tengas)</div>
+    </div>
+
+    <div class="footer">Centro de Formación Profesional N°402 — Taller San José</div>
+  </main>
+
+  <button id="themeToggle" class="theme-btn" aria-label="Cambiar tema"><img id="themeIcon" src="moon.png" alt=""></button>
+
+<script>
+const THEME_KEY='cfp402_theme'; const html=document.documentElement; const btn=document.getElementById('themeToggle'); const ic=document.getElementById('themeIcon');
+function setI(t){ ic.src = t==='dark' ? 'sun.png':'moon.png' } function app(t){ if(t==='dark') html.classList.add('dark'); else html.classList.remove('dark'); setI(t) }
+try{ const s=localStorage.getItem(THEME_KEY); if(s==='dark'||s==='light') app(s); else app('light') }catch(e){ app('light') }
+btn.addEventListener('click', ()=>{ const now = html.classList.toggle('dark') ? 'dark':'light'; app(now); try{ localStorage.setItem(THEME_KEY, now) }catch(e){} })
+</script>
+</body>
+</html>
