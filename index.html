@@ -4,7 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>CFP 402 - Inicio</title>
+
 <style>
+/* ───────────────────────────────
+   VARIABLES: Light + Dark Mode
+─────────────────────────────── */
 :root{
   --bg:#c8fff1;
   --card:#ffffff;
@@ -15,8 +19,9 @@
   --yellow:#ffe46d;
   --soft-blue:#e6efff;
   --radius:18px;
-  --circuit-color: rgba(255,255,255,1);
+  --circuit:rgba(255,255,255,1);
 }
+
 body.dark{
   --bg:#0e1116;
   --card:#171b22;
@@ -24,141 +29,291 @@ body.dark{
   --muted:rgba(255,255,255,0.6);
   --header-bg:#11575b;
   --accent:#2c8bff;
-  --circuit-color: rgba(0,0,0,1);
+  --circuit:rgba(0,0,0,1);
 }
-*{box-sizing:border-box}
+
+/* ───────────────────────────────
+   BASE
+─────────────────────────────── */
+*{ box-sizing:border-box; }
+
 body{
-  margin:0; font-family:"Poppins",sans-serif;
-  background:var(--bg); color:var(--text);
-  padding:20px; display:flex; justify-content:center;
+  margin:0;
+  font-family:"Poppins", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding:20px;
+  display:flex;
+  justify-content:center;
   transition:background .25s, color .25s;
 }
+
+/* ───────────────────────────────
+   LAYOUT + ADAPTABILIDAD
+─────────────────────────────── */
 .container{
-  width:100%; max-width:420px; background:var(--card);
-  border-radius:var(--radius); overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,0.12);
+  width:100%;
+  max-width:500px;
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:auto;
+  box-shadow:0 6px 22px rgba(0,0,0,0.12);
 }
-.header{ background:var(--header-bg); color:#fff; padding:28px 18px; text-align:center }
-.header h1{ margin:0; font-size:1.15rem }
-.header p{ margin-top:6px; opacity:.95; font-size:.95rem }
 
-/* logo */
-.logo-big{ width:180px; height:180px; margin:18px auto; border-radius:14px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.18); }
-.logo-big img{ width:100%; height:100%; object-fit:cover }
+/* ───────────────────────────────
+   HEADER
+─────────────────────────────── */
+.header{
+  background:var(--header-bg);
+  color:#fff;
+  padding:28px 18px;
+  text-align:center;
+}
+.header h1{
+  margin:0;
+  font-size:1.25rem;
+}
+.header p{
+  margin-top:6px;
+  opacity:.95;
+  font-size:.95rem;
+}
 
-/* icons */
-.side-icons{ display:flex; justify-content:center; gap:14px; margin:10px 18px }
-.icon-round{ width:58px; height:58px; border-radius:50%; background:var(--soft-blue); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.12); overflow:hidden }
-.icon-round img{ width:62%; height:auto; }
+/* ───────────────────────────────
+   LOGO RESPONSIVO
+─────────────────────────────── */
+.logo-big{
+  width:45vw;
+  max-width:180px;
+  aspect-ratio:1;
+  margin:18px auto;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+}
+.logo-big img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-/* sections */
-.sections{ padding:18px; display:flex; flex-direction:column; gap:12px }
-.section-btn{ display:inline-block; text-align:center; padding:14px; border-radius:12px; background:var(--yellow); color:var(--text); font-weight:700; text-decoration:none; box-shadow:0 6px 14px rgba(0,0,0,0.08) }
-.section-btn:hover{ transform:translateY(-3px) }
+/* ───────────────────────────────
+   ICONOS DE OFICIOS
+─────────────────────────────── */
+.side-icons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin:10px 18px;
+}
 
-/* socials */
-.redes{ text-align:center; font-weight:700; margin-top:14px }
-.socials{ display:flex; justify-content:center; gap:14px; padding:12px }
-.social-card{ width:55px; height:55px; border-radius:12px; background:var(--soft-blue); display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(0,0,0,0.08) }
-.social-card img{ width:68%; height:auto }
+.icon-round{
+  width:14vw;
+  max-width:58px;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--soft-blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+  overflow:hidden;
+}
+.icon-round img{
+  width:62%;
+}
 
-/* footer */
-.footer{ text-align:center; padding:12px; color:var(--muted) }
+/* ───────────────────────────────
+   SECCIONES
+─────────────────────────────── */
+.sections{
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
 
-/* theme FAB */
+.section-btn{
+  display:inline-block;
+  text-align:center;
+  padding:14px;
+  border-radius:12px;
+  background:var(--yellow);
+  color:var(--text);
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 6px 14px rgba(0,0,0,0.08);
+  transition:transform .2s;
+}
+.section-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* ───────────────────────────────
+   REDES SOCIALES
+─────────────────────────────── */
+.redes{
+  text-align:center;
+  font-weight:700;
+  margin-top:14px;
+}
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  padding:12px;
+}
+.social-card{
+  width:14vw;
+  max-width:55px;
+  aspect-ratio:1;
+  border-radius:12px;
+  background:var(--soft-blue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 14px rgba(0,0,0,0.08);
+}
+.social-card img{
+  width:68%;
+}
+
+/* ───────────────────────────────
+   FOOTER
+─────────────────────────────── */
+.footer{
+  text-align:center;
+  padding:12px;
+  color:var(--muted);
+}
+
+/* ───────────────────────────────
+   BOTÓN FLOTANTE (THEME)
+─────────────────────────────── */
 .theme-btn{
-  position:fixed; right:18px; bottom:18px; width:66px; height:66px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center; background:var(--card); border:3px solid var(--circuit-color);
-  box-shadow:0 12px 28px rgba(0,0,0,0.18); cursor:pointer; transition:transform .18s, border-color .18s;
+  position:fixed;
+  right:14px;
+  bottom:14px;
+  width:16vw;
+  height:16vw;
+  max-width:66px;
+  max-height:66px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--card);
+  border:3px solid var(--circuit);
+  box-shadow:0 12px 24px rgba(0,0,0,0.18);
+  cursor:pointer;
   z-index:999;
-  animation: fabBounce 2.4s ease-in-out infinite;
+  transition:transform .18s, border-color .18s;
 }
-.theme-btn img{ width:34px; height:34px; transition:transform .18s, filter .18s; filter:drop-shadow(0 3px 8px rgba(0,0,0,0.12)) }
-.theme-btn:hover{ transform:scale(1.06) rotate(6deg) }
-@keyframes fabBounce{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-6px) } }
+.theme-btn:hover{
+  transform:scale(1.06);
+}
+.theme-btn img{
+  width:50%;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,0.15));
+}
 
-/* small adjustments */
-@media(max-width:420px){
-  .logo-big{ width:150px;height:150px }
-  .theme-btn{ right:12px; bottom:12px; width:60px;height:60px }
+/* pulso suave */
+.pulsing{
+  animation:pulse .25s ease-out;
+}
+@keyframes pulse{
+  from{ transform:scale(1.1); }
+  to{ transform:scale(1); }
 }
 </style>
 </head>
+
+
 <body>
-  <main class="container" role="main" aria-label="Inicio CFP 402">
-    <header class="header">
-      <h1>CFP N°402 – Taller San José</h1>
-      <p>Formación Profesional Gratuita en Florencio Varela</p>
-    </header>
+<main class="container" role="main" aria-label="Inicio CFP 402">
 
-    <div class="logo-big"><img src="logo.png" alt="Logo CFP 402"></div>
+  <header class="header">
+    <h1>CFP N°402 – Taller San José</h1>
+    <p>Formación Profesional Gratuita en Florencio Varela</p>
+  </header>
 
-    <div class="side-icons" aria-hidden="false">
-      <div class="icon-round" title="Panadería"><img src="pan.png" alt=""></div>
-      <div class="icon-round" title="Cocina"><img src="chef.png" alt=""></div>
-      <div class="icon-round" title="Electricidad"><img src="electricidad.png" alt=""></div>
-      <div class="icon-round" title="Oficina"><img src="oficina.png" alt=""></div>
+  <div class="logo-big">
+    <img src="logo.png" loading="lazy" alt="Logo CFP 402">
+  </div>
+
+  <div class="side-icons" aria-hidden="false">
+    <div class="icon-round" title="Panadería"><img src="pan.png" loading="lazy"></div>
+    <div class="icon-round" title="Cocina"><img src="chef.png" loading="lazy"></div>
+    <div class="icon-round" title="Electricidad"><img src="electricidad.png" loading="lazy"></div>
+    <div class="icon-round" title="Oficina"><img src="oficina.png" loading="lazy"></div>
+  </div>
+
+  <nav class="sections" aria-label="Secciones">
+    <a class="section-btn" href="historia.html">Historia del Centro</a>
+    <a class="section-btn" href="capacitaciones.html">Capacitaciones disponibles</a>
+    <a class="section-btn" href="inscripcion.html">Cómo inscribirte</a>
+    <a class="section-btn" href="ubicacion.html">Ubicación del establecimiento</a>
+  </nav>
+
+  <div style="padding:0 18px">
+    <div class="redes">Redes sociales</div>
+    <div class="socials" role="navigation" aria-label="Redes">
+      <a class="social-card" href="https://www.instagram.com/cfpn402fv" target="_blank" rel="noopener">
+        <img src="instagram.png" loading="lazy" alt="Instagram">
+      </a>
+      <a class="social-card" href="https://www.facebook.com/profile.php?id=100064701714097" target="_blank" rel="noopener">
+        <img src="facebook.png" loading="lazy" alt="Facebook">
+      </a>
     </div>
+  </div>
 
-    <nav class="sections" aria-label="Secciones">
-      <a class="section-btn" href="historia.html">Historia del Centro</a>
-      <a class="section-btn" href="capacitaciones.html">Capacitaciones disponibles</a>
-      <a class="section-btn" href="inscripcion.html">Cómo inscribirte</a>
-      <a class="section-btn" href="ubicacion.html">Ubicación del establecimiento</a>
-    </nav>
+  <div class="footer">
+    Centro de Formación Profesional N°402 — Taller San José
+  </div>
 
-    <div style="padding:0 18px">
-      <div class="redes">Redes sociales</div>
-      <div class="socials" role="navigation" aria-label="Redes">
-        <a class="social-card" href="https://www.instagram.com/cfpn402fv?igsh=MXF1em80N3ZmYTUwaQ==" target="_blank" rel="noopener">
-          <img src="instagram.png" alt="Instagram">
-        </a>
-        <a class="social-card" href="https://www.facebook.com/profile.php?id=100064701714097" target="_blank" rel="noopener">
-          <img src="facebook.png" alt="Facebook">
-        </a>
-      </div>
-    </div>
+</main>
 
-    <div class="footer">Centro de Formación Profesional N°402 — Taller San José</div>
-  </main>
+<!-- Botón flotante del tema -->
+<button id="themeToggle" class="theme-btn" aria-label="Cambiar tema" title="Cambiar tema">
+  <img id="themeIcon" src="moon.png" alt="icono tema">
+</button>
 
-  <!-- theme FAB -->
-  <button id="themeToggle" class="theme-btn" aria-label="Cambiar tema" title="Cambiar tema">
-    <img id="themeIcon" src="moon.png" alt="icono tema">
-  </button>
-
+<!-- ───────────────────────────────
+     SCRIPT OPTIMIZADO
+─────────────────────────────── -->
 <script>
-// THEME: default light, but respect stored preference
-const THEME_KEY = 'cfp402_theme';
-const body = document.documentElement;
-const toggleBtn = document.getElementById('themeToggle');
-const iconImg = document.getElementById('themeIcon');
+const KEY = "cfp402_theme";
+const body = document.body;
+const btn = document.getElementById("themeToggle");
+const icon = document.getElementById("themeIcon");
 
-function setIcon(theme){
-  iconImg.src = theme === 'dark' ? 'sun.png' : 'moon.png';
+function updateIcon(isDark){
+  icon.src = isDark ? "sun.png" : "moon.png";
 }
+
 function applyTheme(theme){
-  if(theme === 'dark') body.classList.add('dark'); else body.classList.remove('dark');
-  setIcon(theme);
+  const isDark = theme === "dark";
+  body.classList.toggle("dark", isDark);
+  updateIcon(isDark);
 }
-(function initTheme(){
-  try{
-    const stored = localStorage.getItem(THEME_KEY);
-    if(stored === 'dark' || stored === 'light'){ applyTheme(stored); }
-    else { applyTheme('light'); } // always start light unless user saved pref
-  }catch(e){ applyTheme('light'); }
+
+// INIT
+(() => {
+  const saved = localStorage.getItem(KEY);
+  applyTheme(saved === "dark" ? "dark" : "light");
 })();
 
-toggleBtn.addEventListener('click', ()=>{
-  const isDark = body.classList.toggle('dark');
-  const theme = isDark ? 'dark' : 'light';
-  setIcon(theme);
-  try{ localStorage.setItem(THEME_KEY, theme); }catch(e){}
-  // pulse effect
-  toggleBtn.classList.remove('pulsing');
-  void toggleBtn.offsetWidth;
-  toggleBtn.classList.add('pulsing');
-  setTimeout(()=> toggleBtn.classList.remove('pulsing'), 800);
+// TOGGLE
+btn.addEventListener("click", () => {
+  const isDark = body.classList.toggle("dark");
+  updateIcon(isDark);
+  localStorage.setItem(KEY, isDark ? "dark" : "light");
+
+  btn.classList.add("pulsing");
+  setTimeout(() => btn.classList.remove("pulsing"), 250);
 });
 </script>
+
 </body>
-</html>
+    </html>
