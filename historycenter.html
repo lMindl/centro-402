@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CFP 402 - Historia</title>
+
+<style>
+:root{
+  --bg:#c8fff1;
+  --card:#fff;
+  --text:#111;
+  --muted:rgba(0,0,0,0.55);
+  --header-bg:#1d9ca5;
+  --circuit-color:rgba(255,255,255,1);
+}
+body.dark{
+  --bg:#0e1116;
+  --card:#171b22;
+  --text:#f0f0f0;
+  --muted:rgba(255,255,255,0.6);
+  --header-bg:#11575b;
+  --circuit-color:rgba(0,0,0,1);
+}
+
+/* BASE */
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  transition:background .25s, color .25s;
+}
+
+/* ANIMACIÓN SUAVE */
+.fade{
+  animation:fadeIn .75s ease;
+}
+@keyframes fadeIn {
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  max-width:480px;
+  background:var(--card);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 6px 22px rgba(0,0,0,0.12);
+}
+
+/* HEADER */
+.header{
+  background:var(--header-bg);
+  color:#fff;
+  padding:22px 18px;
+  text-align:center;
+  position:relative;
+}
+.header a{
+  position:absolute;
+  left:14px;
+  top:14px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  width:34px;
+  height:34px;
+  background:rgba(255,255,255,0.25);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2rem;
+  line-height:0;
+}
+.header h1{
+  margin:0;
+  font-size:1.35rem;
+  text-align:center;
+}
+
+/* CONTENT */
+.content{
+  padding:20px;
+  line-height:1.6;
+}
+
+/* SECTION TITLES */
+.section-title{
+  font-size:1.15rem;
+  font-weight:700;
+  margin:18px 0 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* IMAGE */
+.img-center{
+  width:100%;
+  border-radius:12px;
+  margin:12px 0 16px;
+  box-shadow:0 4px 18px rgba(0,0,0,0.18);
+}
+
+/* TIMELINE */
+.timeline{
+  border-left:3px solid var(--header-bg);
+  margin:18px 0;
+  padding-left:14px;
+}
+.timeline-item{
+  margin-bottom:14px;
+}
+.timeline-item b{
+  color:var(--header-bg);
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:14px;
+  color:var(--muted);
+}
+
+/* THEME BUTTON */
+.theme-btn{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--card);
+  border:3px solid var(--circuit-color);
+  box-shadow:0 12px 28px rgba(0,0,0,0.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:999;
+  transition:transform .25s;
+}
+.theme-btn:active{
+  transform:scale(.92);
+}
+.theme-btn img{
+  width:34px;
+}
+
+</style>
+</head>
+
+<body>
+  <main class="container fade">
+    
+    <header class="header">
+      <a href="index.html">←</a>
+      <h1>Historia del Centro</h1>
+    </header>
+
+    <article class="content">
+
+      <!-- IMAGE PLACEHOLDER -->
+      <img src="center.webp" alt="Foto del CFP 402" class="img-center">
+
+      <h2 class="section-title">📘 Origen</h2>
+      <p>
+        El Centro de Formación Profesional N°402 «Taller San José» funciona desde hace más de veinte años 
+        en el Barrio San Nicolás, acompañando el crecimiento y las necesidades formativas de la comunidad 
+        de Florencio Varela.
+      </p>
+      <p>
+        Su creación respondió a la intención de brindar <b>capacitación gratuita</b> y accesible para todas 
+        las personas que buscaban aprender un oficio sin barreras económicas.
+      </p>
+
+      <h2 class="section-title">🏫 Evolución</h2>
+      <p>
+        Con el paso del tiempo, el centro amplió su oferta incorporando:
+      </p>
+
+      <ul style="margin:10px 0 18px 16px; line-height:1.55;">
+        <li>Áreas gastronómicas actualizadas</li>
+        <li>Cursos técnicos y eléctricos</li>
+        <li>Oficios tradicionales</li>
+        <li>Formación administrativa y digital</li>
+        <li>Espacios equipados para prácticas reales</li>
+      </ul>
+
+      <p>
+        Actualmente cuenta con <b>una sede principal</b> y una <b>subsede en el Barrio El Molino</b>, ampliando 
+        el alcance territorial y la disponibilidad de talleres.
+      </p>
+
+      <h2 class="section-title">📌 Línea temporal</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <b>2003 — Inicios</b><br>
+          Primeros cursos básicos y de oficios tradicionales.
+        </div>
+
+        <div class="timeline-item">
+          <b>2010 — Crecimiento</b><br>
+          Nuevas áreas gastronómicas y formación administrativa.
+        </div>
+
+        <div class="timeline-item">
+          <b>2016 — Subsede El Molino</b><br>
+          Nuevos talleres y expansión del centro.
+        </div>
+
+        <div class="timeline-item">
+          <b>2020–2024 — Actualización</b><br>
+          Renovación de espacios, especialidades y herramientas tecnológicas.
+        </div>
+      </div>
+
+      <h2 class="section-title">🎯 Misión</h2>
+      <p>
+        Brindar formación profesional accesible, gratuita y orientada a oficios que facilitan la inserción 
+        laboral y el desarrollo personal.
+      </p>
+
+      <h2 class="section-title">💙 Valores</h2>
+      <ul style="margin-left:16px; line-height:1.55;">
+        <li>Accesibilidad y amplitud</li>
+        <li>Formación práctica</li>
+        <li>Compromiso con la comunidad</li>
+      </ul>
+
+    </article>
+
+    <div class="footer">
+      Centro de Formación Profesional N°402 — Taller San José
+    </div>
+
+  </main>
+
+
+  <!-- THEME BUTTON -->
+  <button id="themeToggle" class="theme-btn" aria-label="Cambiar tema">
+    <img id="themeIcon" src="moon.png" alt="">
+  </button>
+
+<script>
+/* THEME SYSTEM */
+const KEY='cfp402_theme';
+const html=document.documentElement;
+const btn=document.getElementById('themeToggle');
+const icon=document.getElementById('themeIcon');
+
+function applyTheme(t){
+  if(t==='dark'){ html.classList.add('dark'); icon.src='sun.png'; }
+  else{ html.classList.remove('dark'); icon.src='moon.png'; }
+  localStorage.setItem(KEY,t);
+}
+
+applyTheme(localStorage.getItem(KEY) || 'light');
+
+btn.onclick=()=>{
+  applyTheme(html.classList.contains('dark') ? 'light' : 'dark');
+};
+</script>
+
+</body>
+</html>
