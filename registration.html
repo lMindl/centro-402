@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CFP 402 - Inscripción</title>
+
+<style>
+:root{
+  --bg:#c8fff1;
+  --card:#fff;
+  --text:#111;
+  --muted:rgba(0,0,0,0.55);
+  --header-bg:#1d9ca5;
+  --accent:#0077ff;
+  --soft-blue:#e6efff;
+  --soft-yellow:#fff7c8;
+  --radius:18px;
+  --circuit:rgba(255,255,255,1);
+}
+
+body.dark{
+  --bg:#0e1116;
+  --card:#171b22;
+  --text:#f0f0f0;
+  --muted:rgba(255,255,255,0.6);
+  --header-bg:#11575b;
+  --accent:#2c8bff;
+  --soft-blue:#1c2533;
+  --soft-yellow:#3a3520;
+  --circuit:rgba(0,0,0,1);
+}
+
+/* BASE */
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:"Poppins", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  transition:background .25s, color .25s;
+}
+
+/* LAYOUT */
+.container{
+  width:100%;
+  max-width:500px;
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  margin:auto;
+  box-shadow:0 6px 22px rgba(0,0,0,0.12);
+}
+
+/* HEADER */
+.header{
+  background:var(--header-bg);
+  color:#fff;
+  padding:26px 18px;
+  text-align:center;
+  position:relative;
+}
+.header a{
+  position:absolute;
+  left:14px;
+  top:20px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* CONTENT */
+.content{
+  padding:18px;
+  line-height:1.55;
+}
+
+.section-title{
+  font-size:1.28rem;
+  margin:30px 0 12px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* CAJAS */
+.box{
+  background:var(--soft-blue);
+  padding:16px;
+  border-radius:14px;
+  margin-bottom:18px;
+  line-height:1.55;
+  border-left:6px solid var(--accent);
+}
+
+.yellow-box{
+  background:var(--soft-yellow);
+  padding:16px;
+  border-radius:14px;
+  margin-bottom:18px;
+  border-left:6px solid var(--yellow);
+}
+
+/* CRONOGRAMA */
+.day-block{
+  margin:18px 0;
+  padding:16px;
+  border-radius:14px;
+  background:var(--soft-blue);
+  border-left:6px solid var(--accent);
+}
+
+.day-title{
+  font-weight:700;
+  margin-bottom:10px;
+  font-size:1.1rem;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:12px;
+  color:var(--muted);
+}
+
+/* THEME BUTTON */
+.theme-btn{
+  position:fixed;
+  right:14px;
+  bottom:14px;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--card);
+  border:3px solid var(--circuit);
+  box-shadow:0 12px 24px rgba(0,0,0,0.18);
+  cursor:pointer;
+  z-index:999;
+  transition:transform .18s;
+}
+.theme-btn img{
+  width:50%;
+}
+
+.pulsing{
+  animation:pulse .25s ease-out;
+}
+@keyframes pulse{
+  from{ transform:scale(1.1); }
+  to{   transform:scale(1); }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <header class="header">
+    <a href="index.html">← Inicio</a>
+    <h1>Cómo inscribirte</h1>
+  </header>
+
+  <section class="content">
+
+    <!-- REQUISITOS -->
+    <h2 class="section-title">📋 Requisitos de inscripción (2026)</h2>
+
+    <div class="box">
+      <b>✔ Requisitos generales</b><br>
+      • Ser mayor de 16 años<br>
+      • DNI (original + fotocopia)<br>
+      • Certificado de estudios (primario/secundario)<br><br>
+
+      <b>✔ Especializaciones en Cocina</b><br>
+      • Certificado o título de <b>Cocinero</b> (obligatorio)<br><br>
+
+      <b>✔ Vacantes</b><br>
+      • Preinscripción del <b>1 al 5 de diciembre</b><br>
+      • Formularios publicados en Instagram y Facebook<br>
+      • Vacantes confirmadas en febrero
+    </div>
+
+    <!-- CRONOGRAMA -->
+    <h2 class="section-title">🗓️ Cronograma oficial — Preinscripción 2026</h2>
+
+    <div class="yellow-box">
+      <b>Del 1 al 5 de diciembre — 13:30 a 16:30 hs</b>
+    </div>
+
+    <!-- DÍA 1 -->
+    <div class="day-block">
+      <div class="day-title">📅 Lunes 1 de diciembre</div>
+
+      <b>Formulario 1</b><br>
+      • Mantenimiento de edificios / Pintor de obra<br>
+      • Carpintero / Mobiliario / Obra fina<br><br>
+
+      <b>Formulario 2</b><br>
+      • Herrero — turno tarde<br>
+      • Herrero — turno vespertino<br><br>
+
+      <b>Formulario 3</b><br>
+      • Auxiliar en instalaciones sanitarias y gas<br>
+      • Montador de gas domiciliario
+    </div>
+
+    <!-- DÍA 2 -->
+    <div class="day-block">
+      <div class="day-title">📅 Martes 2 de diciembre</div>
+
+      <b>Formulario 1</b><br>
+      • Confeccionista de bolsos y mochilas<br><br>
+
+      <b>Formulario 2</b><br>
+      • Modista<br><br>
+
+      <b>Formulario 3</b><br>
+      • Reparador de heladeras comerciales<br>
+      • Reparador de electrodomésticos<br><br>
+
+      <b>Formulario 4</b><br>
+      • Montador electricista domiciliario<br>
+      • Electricista en inmuebles
+    </div>
+
+    <!-- DÍA 3 -->
+    <div class="day-block">
+      <div class="day-title">📅 Miércoles 3 de diciembre</div>
+
+      <b>Formulario 1</b><br>
+      • Software administrativo–contable<br>
+      • Habilidades digitales<br>
+      • Marketing y venta digital<br><br>
+
+      <b>Formulario 2</b><br>
+      • Auxiliar en instituciones educativas (Com. 1 y 2)<br>
+      • Limpieza institucional
+    </div>
+
+    <!-- DÍA 4 -->
+    <div class="day-block">
+      <div class="day-title">📅 Jueves 4 de diciembre</div>
+
+      <b>Formulario 1</b><br>
+      • Conservas de frutas y hortalizas<br>
+      • Conservas cárnicas / chacinados y salazones<br><br>
+
+      <b>Formulario 2</b><br>
+      • Cocina vegetariana<br>
+      • Cocina saludable<br>
+      • Cocina libre de gluten
+    </div>
+
+    <!-- DÍA 5 -->
+    <div class="day-block">
+      <div class="day-title">📅 Viernes 5 de diciembre</div>
+
+      <b>Formulario 1</b><br>
+      • Conservación de alimentos<br><br>
+
+      <b>Formulario 2</b><br>
+      • Pizzero – Rotisero<br>
+      • Pastas alimenticias<br><br>
+
+      <b>Formulario 3</b><br>
+      • Panadero<br><br>
+
+      <b>Formulario 4</b><br>
+      • Cocinero
+    </div>
+
+    <div class="yellow-box">
+      ⚠ <b>IMPORTANTE</b><br>
+      • Las vacantes se confirman en <b>FEBRERO</b>.<br>
+      • Las especializaciones requieren <b>certificado de Cocinero</b>.
+    </div>
+
+  </section>
+
+  <div class="footer">
+    Centro de Formación Profesional N°402 — Taller San José
+  </div>
+
+</main>
+
+<button id="themeToggle" class="theme-btn" aria-label="Cambiar tema">
+  <img id="themeIcon" src="moon.webp" alt="">
+</button>
+
+<script>
+const KEY="cfp402_theme";
+const body=document.body;
+const btn=document.getElementById("themeToggle");
+const icon=document.getElementById("themeIcon");
+
+function updateIcon(d){ icon.src=d?"sun.webp":"moon.webp"; }
+function apply(t){ const d=t==="dark"; body.classList.toggle("dark",d); updateIcon(d); }
+
+(()=>{ apply(localStorage.getItem(KEY)==="dark"?"dark":"light"); })();
+
+btn.addEventListener("click",()=>{
+  const d=body.classList.toggle("dark");
+  updateIcon(d);
+  localStorage.setItem(KEY,d?"dark":"light");
+  btn.classList.add("pulsing");
+  setTimeout(()=>btn.classList.remove("pulsing"),250);
+});
+</script>
+
+</body>
+</html>
