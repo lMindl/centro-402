@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Capacitaciones - CFP 402</title>
+
+<style>
+/* -------------------------
+   VARIABLES
+------------------------- */
+:root{
+  --bg: #d8fff5;
+  --bg2: #f5fffc;
+  --card-bg: rgba(255,255,255,0.65);
+  --glass-border: rgba(255,255,255,0.55);
+  --text:#0a0e0f;
+  --muted:#445;
+  --accent:#14a6a1;
+  --radius:16px;
+}
+body.dark{
+  --bg:#081217;
+  --bg2:#0f1a1e;
+  --card-bg: rgba(18,25,30,0.55);
+  --glass-border: rgba(255,255,255,0.04);
+  --text:#eef6f6;
+  --muted:#bcc7c9;
+  --accent:#7ad3c7;
+}
+
+/* -------------------------
+   RESET
+------------------------- */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family: "Poppins", system-ui, sans-serif;
+  background: linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--text);
+  transition: background .45s, color .3s;
+  padding-bottom:90px;
+}
+
+/* FULL WIDTH LAYOUT */
+.page{
+  width:100%;
+  max-width:100%;
+  padding:18px;
+}
+
+/* header */
+.header{
+  background: linear-gradient(90deg,#129a99,#0fa4b8);
+  padding:22px 18px;
+  border-radius:12px;
+  color:#fff;
+  font-weight:800;
+  font-size:1.4rem;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.header a{
+  color:#fff;
+  text-decoration:none;
+  font-size:1rem;
+  font-weight:700;
+  background:rgba(255,255,255,0.22);
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+/* accordion container */
+.accordion{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* card */
+.card{
+  background: var(--card-bg);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius);
+  padding:14px;
+  backdrop-filter: blur(10px) saturate(120%);
+  box-shadow:0 8px 22px rgba(0,0,0,0.10);
+  transition: .28s ease;
+}
+
+/* clickable header */
+.card-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.icon{
+  width:52px;
+  height:52px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  transition:.32s ease;
+}
+
+.card.open .icon{
+  transform:scale(1.08);
+}
+
+.title{
+  font-size:1.03rem;
+  font-weight:700;
+}
+
+.subtitle{
+  font-size:.82rem;
+  color:var(--muted);
+  margin-top:2px;
+  font-weight:600;
+}
+
+.chev{
+  margin-left:auto;
+  font-size:18px;
+  transition:.32s ease;
+  opacity:.7;
+}
+.card.open .chev{
+  transform:rotate(180deg);
+}
+
+/* panel */
+.panel{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .45s ease, opacity .3s ease;
+  padding-left:4px;
+  margin-top:6px;
+}
+
+.card.open .panel{
+  opacity:1;
+}
+
+/* course item */
+.course{
+  padding:10px 12px;
+  background:rgba(255,255,255,0.25);
+  border-radius:12px;
+  margin-bottom:8px;
+  font-weight:600;
+  color:var(--text);
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+/* theme button */
+.theme-btn{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:var(--card-bg);
+  border:1px solid var(--glass-border);
+  box-shadow:0 10px 24px rgba(0,0,0,0.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:2000;
+  transition:background .3s;
+}
+.theme-btn img{
+  width:28px;
+  transition:transform .4s;
+}
+
+.theme-btn:active img{
+  transform:rotate(20deg);
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <a href="index.html">←</a>
+    Capacitaciones
+  </div>
+
+  <div id="accordion" class="accordion">
+
+    <!-- GASTRONOMÍA -->
+    <div class="card">
+      <div class="card-head">
+        <div class="icon">🍳</div>
+        <div>
+          <div class="title">Área Gastronomía</div>
+          <div class="subtitle">Cocinero y especializaciones</div>
+        </div>
+        <div class="chev">⌄</div>
+      </div>
+
+      <div class="panel">
+        <div class="course">Cocinero</div>
+        <div class="course">Especialización en Cocina Libre de Gluten</div>
+        <div class="course">Especialización en Cocina Vegetariana</div>
+        <div class="course">Especialización en Cocina Saludable</div>
+        <div class="course">Pizzero – Rotisero</div>
+        <div class="course">Conservas de frutas y hortalizas</div>
+        <div class="course">Conservas cárnicas y salazones</div>
+        <div class="course">Elaboración de pastas alimenticias</div>
+        <div class="course">Panadería</div>
+        <div class="course">Práctico en conservación de alimentos</div>
+      </div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <div class="card">
+      <div class="card-head">
+        <div class="icon">🧼</div>
+        <div>
+          <div class="title">Servicios y Educación</div>
+          <div class="subtitle">Auxiliares y limpieza</div>
+        </div>
+        <div class="chev">⌄</div>
+      </div>
+
+      <div class="panel">
+        <div class="course">Auxiliar en instituciones educativas</div>
+        <div class="course">Limpieza institucional</div>
+      </div>
+    </div>
+
+    <!-- OFICIOS -->
+    <div class="card">
+      <div class="card-head">
+        <div class="icon">🔨</div>
+        <div>
+          <div class="title">Oficios técnicos</div>
+          <div class="subtitle">Carpintería y herrería</div>
+        </div>
+        <div class="chev">⌄</div>
+      </div>
+
+      <div class="panel">
+        <div class="course">Herrero / Soldador</div>
+        <div class="course">Carpintero / Fabricación de mobiliario / Obra fina</div>
+        <div class="course">Mantenimiento de edificios / Pintor de obra</div>
+      </div>
+    </div>
+
+    <!-- ELECTRICIDAD -->
+    <div class="card">
+      <div class="card-head">
+        <div class="icon">⚡</div>
+        <div>
+          <div class="title">Electricidad y Refrigeración</div>
+          <div class="subtitle">Electricistas y reparación</div>
+        </div>
+        <div class="chev">⌄</div>
+      </div>
+
+      <div class="panel">
+        <div class="course">Montador electricista / Electricista domiciliario</div>
+        <div class="course">Reparador de heladeras comerciales</div>
+        <div class="course">Reparador de electrodomésticos</div>
+      </div>
+    </div>
+
+    <!-- ADMIN -->
+    <div class="card">
+      <div class="card-head">
+        <div class="icon">💻</div>
+        <div>
+          <div class="title">Administración y Tecnología</div>
+          <div class="subtitle">Digital y contable</div>
+        </div>
+        <div class="chev">⌄</div>
+      </div>
+
+      <div class="panel">
+        <div class="course">Operador administrativo–contable</div>
+        <div class="course">Habilidades digitales</div>
+        <div class="course">Marketing y venta digital</div>
+      </div>
+    </div>
+
+    <!-- TEXTIL -->
+    <div class="card">
+      <div class="card-head">
+        <div class="icon">👗</div>
+        <div>
+          <div class="title">Textil</div>
+          <div class="subtitle">Modista y confección</div>
+        </div>
+        <div class="chev">⌄</div>
+      </div>
+
+      <div class="panel">
+        <div class="course">Modista</div>
+        <div class="course">Confeccionista de bolsos y mochilas</div>
+      </div>
+    </div>
+
+    <!-- INSTALACIONES -->
+    <div class="card">
+      <div class="card-head">
+        <div class="icon">🔌</div>
+        <div>
+          <div class="title">Instalaciones</div>
+          <div class="subtitle">Gas y sanitarias</div>
+        </div>
+        <div class="chev">⌄</div>
+      </div>
+
+      <div class="panel">
+        <div class="course">Auxiliar en instalaciones sanitarias y de gas</div>
+        <div class="course">Montador de instalaciones de gas domiciliario</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- THEME BUTTON -->
+<button id="themeToggle" class="theme-btn">
+  <img id="themeIcon" src="sun.png">
+</button>
+
+
+<script>
+/* -------------------
+      THEME
+------------------- */
+const THEME_KEY='cfp402_theme';
+const body=document.body;
+const btn=document.getElementById('themeToggle');
+const ic=document.getElementById('themeIcon');
+
+function setTheme(t){
+  if(t==='dark'){
+    body.classList.add('dark');
+    ic.src='moon.png';
+  } else{
+    body.classList.remove('dark');
+    ic.src='sun.png';
+  }
+  localStorage.setItem(THEME_KEY,t);
+}
+
+setTheme(localStorage.getItem(THEME_KEY) || 'light');
+
+btn.onclick=()=>{
+  setTheme(body.classList.contains('dark') ? 'light':'dark');
+};
+
+
+/* -------------------
+   ACCORDION
+------------------- */
+const cards=document.querySelectorAll('.card');
+
+cards.forEach(card=>{
+  const head=card.querySelector('.card-head');
+  const panel=card.querySelector('.panel');
+
+  head.addEventListener('click',()=>{
+    const open=card.classList.contains('open');
+
+    cards.forEach(c=>{
+      c.classList.remove('open');
+      const p=c.querySelector('.panel');
+      p.style.maxHeight=null;
+    });
+
+    if(!open){
+      card.classList.add('open');
+      panel.style.maxHeight=panel.scrollHeight+"px";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
