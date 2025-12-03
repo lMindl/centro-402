@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Capacitaciones - CFP 402</title>
+
+<style>
+/* -------------------------
+   VARIABLES
+------------------------- */
+:root{
+  --bg:#dffef8;
+  --bg2:#faffff;
+  --text:#0a0e0f;
+  --muted:#445;
+  --accent:#12a9aa;
+  --card:#ffffffee;
+  --radius:16px;
+}
+body.dark{
+  --bg:#07151a;
+  --bg2:#0e1d22;
+  --text:#eaf6f7;
+  --muted:#9fb5b8;
+  --accent:#7ed3ca;
+  --card:#122126cc;
+}
+
+/* -------------------------
+   RESET / BASE
+------------------------- */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:"Poppins",system-ui,sans-serif;
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--text);
+  transition:.35s ease;
+  padding:18px;
+  padding-bottom:100px;
+}
+
+/* -------------------------
+   HEADER
+------------------------- */
+.header{
+  width:100%;
+  background:linear-gradient(90deg,#12a9aa,#0fa4b8);
+  border-radius:14px;
+  padding:22px 18px;
+  font-weight:800;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:22px;
+  box-shadow:0 6px 14px #0003;
+}
+
+.header a{
+  color:#fff;
+  background:#ffffff33;
+  padding:6px 10px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:1rem;
+}
+
+.header-title{
+  flex:1;
+  text-align:center;
+  font-weight:800;
+  font-size:1.4rem;
+  color:#000;
+}
+
+/* -------------------------
+   ACCORDION
+------------------------- */
+.accordion{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:14px;
+  border:1px solid #00000015;
+  box-shadow:0 6px 14px #0002;
+  transition:.25s ease;
+}
+
+.card-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.icon{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  background:#ffffff44;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+}
+
+.title{
+  font-weight:700;
+  font-size:1.05rem;
+}
+
+.subtitle{
+  font-size:.8rem;
+  color:var(--muted);
+  font-weight:600;
+}
+
+.chev{
+  margin-left:auto;
+  font-size:18px;
+  opacity:.6;
+  transition:.3s;
+}
+.card.open .chev{
+  transform:rotate(180deg);
+}
+
+.panel{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .45s ease, opacity .3s ease;
+  padding-left:6px;
+  margin-top:6px;
+}
+.card.open .panel{
+  opacity:1;
+}
+
+.course{
+  padding:10px 12px;
+  background:#ffffff33;
+  border-radius:12px;
+  margin-bottom:8px;
+  font-weight:600;
+  border:1px solid #0000000a;
+}
+
+/* -------------------------
+   THEME BUTTON
+------------------------- */
+.theme-btn{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  border:1px solid #ffffff22;
+  background:var(--card);
+  box-shadow:0 10px 24px #0003;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:1000;
+}
+.theme-btn img{ width:30px }
+
+/* -------------------------
+   SCHEDULES
+------------------------- */
+.schedule-title-main{
+  text-align:center;
+  margin:32px 0 10px;
+  font-size:1.25rem;
+  font-weight:800;
+}
+
+.schedule-item{
+  padding:12px;
+  background:#ffffff22;
+  border-radius:12px;
+  border:1px solid #00000011;
+  margin-bottom:10px;
+}
+.schedule-title{
+  font-weight:700;
+  margin-bottom:4px;
+}
+.schedule-info{
+  font-size:.9rem;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <a href="index.html">←</a>
+  <span class="header-title">Áreas de capacitaciones</span>
+</div>
+
+<!-- ACCORDION DE CURSOS -->
+<div id="accordion" class="accordion"></div>
+
+<!-- HORARIOS -->
+<h2 class="schedule-title-main">Horarios por sede</h2>
+
+<div id="schedules" class="accordion" style="margin-top:14px"></div>
+
+<!-- THEME BUTTON -->
+<button id="themeToggle" class="theme-btn">
+  <img id="themeIcon" src="sun.webp">
+</button>
+
+<script>
+/* ----------------------------------------
+   ÁREAS Y CURSOS
+---------------------------------------- */
+const areas=[
+  {icon:"🍳",title:"Gastronomía",subtitle:"Cocina y especializaciones",courses:[
+    "Cocinero","Cocina Libre de Gluten","Cocina Vegetariana","Cocina Saludable",
+    "Pizzero – Rotisero","Conservas de frutas y hortalizas","Conservas cárnicas y salazones",
+    "Elaboración de pastas alimenticias","Panadería","Práctico en conservación de alimentos"
+  ]},
+  {icon:"🧼",title:"Servicios y Educación",subtitle:"Auxiliares y limpieza",courses:[
+    "Auxiliar en instituciones educativas","Limpieza institucional"
+  ]},
+  {icon:"🔨",title:"Oficios técnicos",subtitle:"Carpintería y herrería",courses:[
+    "Herrero / Soldador","Carpintero / Fabricación de mobiliario / Obra fina",
+    "Mantenimiento de edificios / Pintor de obra"
+  ]},
+  {icon:"⚡",title:"Electricidad y Refrigeración",subtitle:"Electricistas y reparación",courses:[
+    "Montador electricista / Electricista domiciliario",
+    "Reparador de heladeras comerciales","Reparador de electrodomésticos"
+  ]},
+  {icon:"💻",title:"Administración y Tecnología",subtitle:"Digital y contable",courses:[
+    "Operador administrativo–contable","Habilidades digitales","Marketing y venta digital"
+  ]},
+  {icon:"👗",title:"Textil",subtitle:"Modista y confección",courses:[
+    "Modista","Confeccionista de bolsos y mochilas"
+  ]},
+  {icon:"🔌",title:"Instalaciones",subtitle:"Gas y sanitarias",courses:[
+    "Auxiliar en instalaciones sanitarias y de gas","Montador de instalaciones de gas domiciliario"
+  ]}
+];
+
+/* ----------------------------------------
+   HORARIOS
+---------------------------------------- */
+const schedulesData={
+  sede:[
+    ["Cocinero","Lun/Mié/Vie – 08:00 a 12:00"],
+    ["Cocina Libre de Gluten","Mar/Jue – 08:00 a 13:00"],
+    ["Cocina Vegetariana","Mar/Jue – 08:00 a 13:00"],
+    ["Cocina Saludable","Mar/Jue – 08:00 a 13:00"],
+    ["Conservas de frutas y hortalizas","Lun/Mié/Vie – 18:00 a 22:00"],
+    ["Conservas cárnicas y salazones","Lun/Mié/Vie – 18:00 a 22:00"],
+    ["Práctico en conservación de alimentos","Lun/Mié/Vie – 13:00 a 17:00"],
+    ["Auxiliar en Instituciones Educativas","Mar/Jue – 08:00 a 13:00"],
+    ["Limpieza Institucional","Mar/Jue – 08:00 a 13:00"],
+    ["Soldador / Herrero","Lun/Mié/Vie – 17:30 a 21:00"],
+    ["Soldador / Herrero (Turno adicional)","Lun/Mié/Vie – 15:30 a 16:30"],
+    ["Mantenimiento de Edificios / Pintor de Obra","Lun/Mié – 13:00 a 16:30"],
+    ["Montador Electricista / Electricista en Inmuebles","Mar/Jue – 08:00 a 13:00"],
+    ["Reparador de Heladeras / Electrodomésticos","Mar/Jue – 13:00 a 17:00"],
+    ["Operador Administrativo-Contable","Lun/Mié – 08:30 a 11:50"],
+    ["Habilidades Digitales / Marketing y Venta Digital","Lun/Mié – 08:30 a 11:50"],
+    ["Auxiliar en Instalaciones Sanitarias y Gas","Mar/Mié/Jue – 17:30 a 21:30"]
+  ],
+  subsede:[
+    ["Pizzero – Rotisero","Lun/Mié/Vie – 13:00 a 17:00"],
+    ["Elaboración de Pastas Alimenticias","Lun/Mié/Vie – 13:00 a 17:00"],
+    ["Panadero","Lun/Mié/Vie – 08:10 a 11:30"],
+    ["Carpintería / Mobiliario / Obra fina","Lun/Mié/Vie – 08:00 a 12:00"],
+    ["Modista de Alta Costura","Lun/Mar/Mié – 08:10 a 11:30"],
+    ["Confeccionista de Bolsos y Mochilas","Mar/Mié – 13:00 a 16:20"]
+  ]
+};
+
+/* ----------------------------------------
+   RENDER ÁREAS
+---------------------------------------- */
+const accordion=document.getElementById("accordion");
+
+areas.forEach(area=>{
+  const card=document.createElement("div");
+  card.className="card";
+
+  card.innerHTML=`
+    <div class="card-head">
+      <div class="icon">${area.icon}</div>
+      <div>
+        <div class="title">${area.title}</div>
+        <div class="subtitle">${area.subtitle}</div>
+      </div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="panel"></div>
+  `;
+
+  const panel=card.querySelector(".panel");
+
+  area.courses.forEach(c=>{
+    panel.innerHTML+=`<div class="course">${c}</div>`;
+  });
+
+  accordion.appendChild(card);
+});
+
+/* ----------------------------------------
+   RENDER HORARIOS
+---------------------------------------- */
+const schedulesDiv=document.getElementById("schedules");
+
+function renderScheduleBlock(title,data,icon){
+  const card=document.createElement("div");
+  card.className="card";
+
+  card.innerHTML=`
+    <div class="card-head">
+      <div class="icon">${icon}</div>
+      <div><div class="title">${title}</div></div>
+      <div class="chev">⌄</div>
+    </div>
+    <div class="panel"></div>
+  `;
+
+  const panel=card.querySelector(".panel");
+
+  data.forEach(([name,time])=>{
+    panel.innerHTML+=`
+      <div class="schedule-item">
+        <div class="schedule-title">${name}</div>
+        <div class="schedule-info">${time}</div>
+      </div>
+    `;
+  });
+
+  schedulesDiv.appendChild(card);
+}
+
+renderScheduleBlock("Sede Principal",schedulesData.sede,"🏫");
+renderScheduleBlock("Subsede El Molino",schedulesData.subsede,"🏚️");
+
+/* ----------------------------------------
+   ACCORDIONS
+---------------------------------------- */
+function setupAccordions(){
+  document.querySelectorAll(".card").forEach(card=>{
+    const head=card.querySelector(".card-head");
+    const panel=card.querySelector(".panel");
+
+    head.onclick=()=>{
+      const open=card.classList.contains("open");
+
+      document.querySelectorAll(".card").forEach(c=>{
+        c.classList.remove("open");
+        c.querySelector(".panel").style.maxHeight=null;
+      });
+
+      if(!open){
+        card.classList.add("open");
+        panel.style.maxHeight=panel.scrollHeight+"px";
+      }
+    };
+  });
+}
+setupAccordions();
+
+/* ----------------------------------------
+   THEME
+---------------------------------------- */
+const body=document.body;
+const THEME_KEY="cfp402_theme";
+const icon=document.getElementById("themeIcon");
+
+function setTheme(t){
+  if(t==="dark"){
+    body.classList.add("dark");
+    icon.src="moon.webp";
+  } else {
+    body.classList.remove("dark");
+    icon.src="sun.webp";
+  }
+  localStorage.setItem(THEME_KEY,t);
+}
+
+setTheme(localStorage.getItem(THEME_KEY)||"light");
+
+document.getElementById("themeToggle").onclick=()=>{
+  setTheme(body.classList.contains("dark")?"light":"dark");
+};
+</script>
+
+</body>
+</html>
